@@ -19,7 +19,6 @@ import ShopCollection from "./components/utils/ShopCollection";
 import { Context } from "./app/Context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/cart/Cart";
-import CartEmpty from "./components/cart/CartEmpty";
 
 export default function App() {
   const { darkMode } = useContext(Context);
