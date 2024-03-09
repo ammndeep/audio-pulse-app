@@ -59,6 +59,7 @@ const newArrivals = {
             price: "289",
             rating: "4.9",
             img: product1,
+            Qty: 1,
         },
         {
             id: "0x2",
@@ -68,6 +69,8 @@ const newArrivals = {
             price: "369",
             rating: "4.7",
             img: product2,
+            Qty: 1,
+
         },
         {
             id: "0x3",
@@ -77,6 +80,8 @@ const newArrivals = {
             price: "189",
             rating: "4.5",
             img: product3,
+            Qty: 1,
+
         },
         {
             id: "0x4",
@@ -86,6 +91,8 @@ const newArrivals = {
             price: "299",
             rating: "4.8",
             img: product4,
+            Qty: 1,
+
         },
     ],
 };
@@ -125,6 +132,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.7",
             img: Product1,
+            Qty: 1,
+
         },
         {
             id: "0Bx2",
@@ -134,6 +143,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.8",
             img: Product2,
+            Qty: 1,
+
         },
         {
             id: "0Bx3",
@@ -143,6 +154,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.7",
             img: Product3,
+            Qty: 1,
+
         },
         {
             id: "0Bx4",
@@ -152,6 +165,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.7",
             img: Product4,
+            Qty: 1,
+
         },
         {
             id: "0Bx5",
@@ -161,6 +176,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.3",
             img: Product5,
+            Qty: 1,
+
         },
         {
             id: "0Bx6",
@@ -170,6 +187,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.7",
             img: Product6,
+            Qty: 1,
+
         },
         {
             id: "0Bx7",
@@ -179,6 +198,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.9",
             img: Product7,
+            Qty: 1,
+
         },
         {
             id: "0Bx8",
@@ -188,6 +209,8 @@ const bestSeller = {
             btn: "Add To Cart",
             rating: "4.7",
             img: Product8,
+            Qty: 1,
+
         },
     ],
 };

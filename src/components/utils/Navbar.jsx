@@ -2,18 +2,16 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineLightMode } from "react-icons/md";
 import { BsMoonStarsFill } from "react-icons/bs";
-import { useContext, useEffect, useState } from "react";
-import { CartState, Context } from "../../app/Context";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { DarkModeActions } from "../../app/DarkModeSlice";
 
 export default function Navbar() {
   const [navState, setNavState] = useState(false);
-
-  const {
-    state: { cart },
-  } = CartState();
-
-  const { darkMode, toggleTheme } = useContext(Context);
+  const { cart } = useSelector((state) => state.allCart);
+  const darkMode = useSelector((state) => state.darkMode);
+  const dispatch = useDispatch();
 
   const onNavScroll = () => {
     if (window.scrollY > 30) {
@@ -52,14 +50,14 @@ export default function Navbar() {
                   size={23}
                   color={darkMode ? "white" : "currentColor"}
                   className="icon-style"
-                  onClick={toggleTheme}
+                  onClick={() => dispatch(DarkModeActions.toggleTheme())}
                 />
               ) : (
                 <MdOutlineLightMode
                   size={23}
                   color={darkMode ? "white" : "currentColor"}
                   className="icon-style "
-                  onClick={toggleTheme}
+                  onClick={() => dispatch(DarkModeActions.toggleTheme())}
                 />
               )}
             </li>

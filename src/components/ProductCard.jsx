@@ -1,13 +1,11 @@
-import { useContext } from "react";
 import { RiStarSFill } from "react-icons/ri";
-import { CartState, Context } from "../app/Context";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../app/CartSlice";
 export default function ProductCard({ item }) {
-  const { darkMode } = useContext(Context);
-
-  const {
-    state: { cart },
-    dispatch,
-  } = CartState();
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.allCart);
+  // console.log(cart);
+  const darkMode = useSelector((state) => state.darkMode);
 
   return (
     <>
@@ -26,12 +24,7 @@ export default function ProductCard({ item }) {
         </p>
         {cart.some((p) => p.id === item.id) ? (
           <button
-            onClick={() =>
-              dispatch({
-                type: "REMOVE_FROM_CART",
-                payload: item,
-              })
-            }
+            onClick={() => dispatch(removeFromCart(item.id))}
             className={`${
               darkMode
                 ? " bg-transparent text-white border-2 shadow-sm hover:shadow-md hover:shadow-white hover:shadow-red-500 hover:border-red-500 hover:text-red-500"
@@ -42,12 +35,7 @@ export default function ProductCard({ item }) {
           </button>
         ) : (
           <button
-            onClick={() =>
-              dispatch({
-                type: "ADD_TO_CART",
-                payload: item,
-              })
-            }
+            onClick={() => dispatch(addToCart(item))}
             className={`${
               darkMode
                 ? "bg-transparent text-white border-2 shadow-sm hover:shadow-md hover:shadow-white hover:shadow-green-500 hover:border-green-500 hover:text-green-500"

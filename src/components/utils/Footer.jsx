@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { Context } from "../../app/Context";
+import { useSelector } from "react-redux";
 
 export default function Footer() {
-  const { darkMode } = useContext(Context);
+  const darkMode = useSelector((state) => state.darkMode);
   return (
     <>
       <div

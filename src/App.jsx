@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {
   heroapi,
   newArrivals,
@@ -16,13 +15,12 @@ import NewsFeed from "./components/utils/NewsFeed";
 import SaleBanner from "./components/utils/SaleBanner";
 import Services from "./components/utils/Services";
 import ShopCollection from "./components/utils/ShopCollection";
-import { Context } from "./app/Context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/cart/Cart";
+import { useSelector } from "react-redux";
 
 export default function App() {
-  const { darkMode } = useContext(Context);
-
+  const darkMode = useSelector((state) => state.darkMode);
   return (
     <>
       <div

@@ -1,10 +1,11 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { ContextProvider } from "./app/Context.jsx";
+import { Provider } from "react-redux";
+import CartStore from "./app/index.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ContextProvider>
+  <Provider store={CartStore}>
     <App />
-  </ContextProvider>
+  </Provider>
 );

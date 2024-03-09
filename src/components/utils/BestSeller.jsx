@@ -1,17 +1,12 @@
-import { useContext } from "react";
-import { CartState, Context } from "../../app/Context";
 import { RiStarSFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../app/CartSlice";
 export default function BestSeller({ bestSeller }) {
   const { title, items } = bestSeller;
 
-  const { darkMode } = useContext(Context);
-
-  const {
-    state: { cart },
-    dispatch,
-  } = CartState();
-  console.log(cart);
-
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.darkMode);
+  const { cart } = useSelector((state) => state.allCart);
   return (
     <>
       <div className="max-w-6xl sm:mx-auto">
@@ -36,12 +31,7 @@ export default function BestSeller({ bestSeller }) {
               </p>
               {cart.some((p) => p.id === item.id) ? (
                 <button
-                  onClick={() =>
-                    dispatch({
-                      type: "REMOVE_FROM_CART",
-                      payload: item,
-                    })
-                  }
+                  onClick={() => dispatch(removeFromCart(item.id))}
                   className={`${
                     darkMode
                       ? "bg-transparent text-white border-2 shadow-sm hover:shadow-md hover:shadow-red-500 border-red-500 text-red-500"
@@ -52,12 +42,7 @@ export default function BestSeller({ bestSeller }) {
                 </button>
               ) : (
                 <button
-                  onClick={() =>
-                    dispatch({
-                      type: "ADD_TO_CART",
-                      payload: item,
-                    })
-                  }
+                  onClick={() => dispatch(addToCart(item))}
                   className={`${
                     darkMode
                       ? "bg-transparent text-white border-2 shadow-sm hover:shadow-md hover:shadow-green-500 hover:border-green-500 hover:text-green-500"

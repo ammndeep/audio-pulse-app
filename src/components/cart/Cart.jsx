@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
-import { CartState } from "../../app/Context";
 import { MdDelete } from "react-icons/md";
 import CartEmpty from "./CartEmpty";
+import { useDispatch, useSelector } from "react-redux";
+import { decreaseQty, increasedQty, removeFromCart } from "../../app/CartSlice";
 
 export default function Cart() {
-  const {
-    state: { cart },
-    dispatch,
-  } = CartState();
+  const { cart } = useSelector((state) => state.allCart);
 
+  const dispatch = useDispatch();
   const [total, setTotal] = useState();
   useEffect(() => {
     setTotal(
-      cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
+      cart.reduce((acc, curr) => acc + Number(curr.price) * curr.Qty, 0)
     );
   }, [cart]);
   return (
@@ -47,38 +46,23 @@ export default function Cart() {
                   <br />
                   <button
                     className="p-1 mt-2 cart-btn mr-3 px-2 hover:bg-green-600"
-                    onClick={() =>
-                      dispatch({
-                        type: "INCREASE_QTY",
-                        payload: product,
-                      })
-                    }
+                    onClick={() => dispatch(increasedQty(product.id))}
                   >
                     +
                   </button>
-                  <span className="text-2xl font-bold mr-3">{product.qty}</span>
+                  <span className="text-2xl font-bold mr-3">{product.Qty}</span>
                   <button
                     className="p-1 mt-2 cart-btn mr-3 px-2 hover:bg-red-600"
-                    onClick={() =>
-                      dispatch({
-                        type: "DECREASE_QTY",
-                        payload: product,
-                      })
-                    }
+                    onClick={() => dispatch(decreaseQty(product.id))}
                   >
                     -
                   </button>
 
                   <button className="p-1 mt-2 mr-3 px-2 cart-btn hover:bg-red-600">
                     <MdDelete
-                      className="hover:text-white inline-flex "
+                      className="hover:text-white inline-flex"
                       size={22}
-                      onClick={() =>
-                        dispatch({
-                          type: "REMOVE_FROM_CART",
-                          payload: product,
-                        })
-                      }
+                      onClick={() => dispatch(removeFromCart(product.id))}
                     />
                   </button>
                 </div>
