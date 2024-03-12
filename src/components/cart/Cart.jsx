@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import CartEmpty from "./CartEmpty";
 import { useDispatch, useSelector } from "react-redux";
-import { decreaseQty, increasedQty, removeFromCart } from "../../app/CartSlice";
+import {
+  decreaseQty,
+  getCartTotal,
+  increasedQty,
+  removeFromCart,
+} from "../../app/CartSlice";
 
 export default function Cart() {
-  const { cart } = useSelector((state) => state.allCart);
-
+  const { cart, totalAmount, totalQuantity } = useSelector(
+    (state) => state.allCart
+  );
   const dispatch = useDispatch();
-  const [total, setTotal] = useState();
   useEffect(() => {
-    setTotal(
-      cart.reduce((acc, curr) => acc + Number(curr.price) * curr.Qty, 0)
-    );
+    dispatch(getCartTotal());
   }, [cart]);
+
   return (
     <>
       {cart.length === 0 ? (
@@ -75,7 +79,8 @@ export default function Cart() {
             <h2 className="text-3xl sm:text-2xl text-medium my-2">
               Total Price :)
             </h2>
-            <span className="text-3xl mb-2">${total}</span> <br />
+            <span className="text-3xl mb-2">${totalAmount}</span> <br />
+            <span className="text-xl">{totalQuantity} items</span>
             <button className="bg-transparent border-2 rounded-md p-2 my-3 hover:bg-slate-100 hover:text-black">
               Proceed To Payment
             </button>

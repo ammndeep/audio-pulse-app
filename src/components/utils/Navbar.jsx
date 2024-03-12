@@ -62,11 +62,13 @@ export default function Navbar() {
               )}
             </li>
             <li className="grid items-center">
-              <FaRegHeart
-                size={23}
-                color={darkMode ? "white" : "currentColor"}
-                className="icon-style"
-              />
+              <Link to="/wishlist">
+                <FaRegHeart
+                  size={23}
+                  color={darkMode ? "white" : "currentColor"}
+                  className="icon-style"
+                />
+              </Link>
             </li>
             <li className="grid items-center">
               <Link to="/cart">

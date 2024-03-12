@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = localStorage.getItem("darkMode") === "true";
 
 const DarkModeSlice = createSlice({
     name: 'darkMode',
-    initialState: false,
+    initialState,
     reducers: {
         toggleTheme: (state) => {
-            return state = !state;
+            localStorage.setItem("darkMode", !state);
+            return !state;
         }
+
     }
 })
 

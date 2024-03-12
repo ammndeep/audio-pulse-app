@@ -18,13 +18,14 @@ import ShopCollection from "./components/utils/ShopCollection";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/cart/Cart";
 import { useSelector } from "react-redux";
+import Wishlist from "./components/wishlist/Wishlist";
 
 export default function App() {
   const darkMode = useSelector((state) => state.darkMode);
   return (
     <>
       <div
-        className={` min-h-screen absolute top-0 left-0 right-0 ${
+        className={` min-h-screen overflow-y-auto absolute top-0 left-0 right-0 ${
           darkMode ? "dark-mode" : "light-mode"
         }`}
       >
@@ -48,6 +49,7 @@ export default function App() {
                 }
               />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/wishlist" element={<Wishlist />} />
             </Routes>
           </div>
         </BrowserRouter>
